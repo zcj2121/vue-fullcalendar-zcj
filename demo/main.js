@@ -2,8 +2,8 @@
 // var Vue = require('vue')
 import Vue from 'vue'
 import App from './app'
-import FullCalendar from '../dist/vue-fullcalendar.js'
-Vue.use(FullCalendar)
+import FullCalendar from 'vue-fullcalendar-zcj'
+Vue.component('full-calendar', FullCalendar)
 // new Vue({
 //   el : '#app',
 //   components : {

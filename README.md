@@ -7,8 +7,7 @@
 
 ```javascript
 import FullCalendar from 'vue-fullcalendar-zcj'
-
-Vue.use(FullCalendar)
+Vue.component('full-calendar', FullCalendar)
 ```
 
 ### 使用
@@ -64,9 +63,6 @@ export default {
         })
       }
     }
-  },
-  components : {
-    'full-calendar' : require('src/fullCalendar')
   }
 }
 ```

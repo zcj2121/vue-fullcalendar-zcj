@@ -212,10 +212,10 @@
             background: #00CC00;
             color: #fff;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            line-height: 20px;
-            padding:4px;
+            width: 22px;
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
             display: block;
           }
         }

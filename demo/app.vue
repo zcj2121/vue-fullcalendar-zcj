@@ -71,9 +71,9 @@ export default {
       }
     }
   },
-  components : {
-    'full-calendar' : require('src/fullCalendar')
-  }
+  // components : {
+  //   'full-calendar' : require('src/fullCalendar')
+  // }
 }
 </script>
 <style lang='scss'>
