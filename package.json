@@ -45,7 +45,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Wanderxx/vue-fullcalendar.git"
+    "url": "git+https://github.com/zcj2121/vue-fullcalendar-zcj"
   },
   "keywords": [
     "vue",
