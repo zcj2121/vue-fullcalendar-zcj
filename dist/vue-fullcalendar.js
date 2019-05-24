@@ -1,5 +1,5 @@
 /*!
- * vue-fullcalendar-zcj v1.1.2
+ * vue-fullcalendar-zcj v1.1.5
  * (c) 2019 jackjo 
  * @license MIT
  */
@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /* script */
 	  __webpack_require__(7),
 	  /* template */
-	  __webpack_require__(58),
+	  __webpack_require__(61),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1645,7 +1645,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /* script */
 	  __webpack_require__(56),
 	  /* template */
-	  __webpack_require__(57),
+	  __webpack_require__(60),
 	  /* scopeId */
 	  null,
 	  /* cssModules */
@@ -1706,7 +1706,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "\n.full-calendar-header {\n  display: flex;\n  align-items: center;\n}\n.full-calendar-header .header-left, .full-calendar-header .header-right {\n    flex: 1;\n}\n.full-calendar-header .header-right {\n    text-align: right;\n}\n.full-calendar-header .fc-today, .full-calendar-header .fc-pull, .full-calendar-header .fc-reset, .full-calendar-header .fc-save {\n    display: inline-block;\n    border: 1px solid #ccc;\n    padding: 2px 6px;\n    font-size: 14px;\n    border-radius: 2px;\n    cursor: pointer;\n}\n.full-calendar-header .fc-today:hover, .full-calendar-header .fc-pull:hover, .full-calendar-header .fc-save:hover, .full-calendar-header .fc-reset:hover {\n    background: #eee;\n}\n.full-calendar-header .header-center {\n    flex: 3;\n    text-align: center;\n}\n.full-calendar-header .header-center .title {\n      margin: 0 10px;\n      width: 90px;\n      display: inline-block;\n}\n.full-calendar-header .header-center .prev-month, .full-calendar-header .header-center .next-month {\n      cursor: pointer;\n}\n", ""]);
+	exports.push([module.id, "\n.full-calendar-header {\n  display: flex;\n  align-items: center;\n}\n.full-calendar-header .header-left, .full-calendar-header .header-right {\n    flex: 2;\n    white-space: nowrap;\n}\n.full-calendar-header .header-right {\n    text-align: right;\n}\n.full-calendar-header .fc-today, .full-calendar-header .fc-pull, .full-calendar-header .fc-reset, .full-calendar-header .fc-save {\n    display: inline-block;\n    border: 1px solid #ccc;\n    padding: 2px 6px;\n    font-size: 14px;\n    border-radius: 2px;\n    cursor: pointer;\n}\n.full-calendar-header .fc-today:hover, .full-calendar-header .fc-pull:hover, .full-calendar-header .fc-save:hover, .full-calendar-header .fc-reset:hover {\n    background: #eee;\n}\n.full-calendar-header .header-center {\n    flex: 2;\n    text-align: center;\n    white-space: nowrap;\n}\n.full-calendar-header .header-center .title {\n      margin: 0 10px;\n      width: 90px;\n      display: inline-block;\n}\n.full-calendar-header .header-center .prev-month, .full-calendar-header .header-center .next-month {\n      cursor: pointer;\n}\n", ""]);
 
 	// exports
 
@@ -1721,11 +1721,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
+	var _stringify = __webpack_require__(57);
+
+	var _stringify2 = _interopRequireDefault(_stringify);
+
 	var _dateFunc = __webpack_require__(51);
 
 	var _dateFunc2 = _interopRequireDefault(_dateFunc);
 
+	var _export = __webpack_require__(59);
+
+	var _export2 = _interopRequireDefault(_export);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 	  created: function created() {
@@ -1769,6 +1796,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.$emit('changeSave');
 	      this.dispatchEvent();
 	    },
+	    toExport: function toExport() {
+	      (0, _export2.default)('日期JSON数据' + new Date().getTime() + '.txt', (0, _stringify2.default)(this.arrData));
+	    },
 	    toToday: function toToday() {
 	      this.headDate = this.changeMonth(this.headDate, 0, 'today');
 	      this.dispatchEvent();
@@ -1810,26 +1840,48 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.$emit('change', _dateFunc2.default.format(startDate, 'yyyy-MM-dd'), _dateFunc2.default.format(endDate, 'yyyy-MM-dd'), _dateFunc2.default.format(currentDate, 'yyyy-MM-dd'), this.headDate);
 	    }
 	  }
-	}; //
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+	};
 
 /***/ }),
 /* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(58), __esModule: true };
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var core = __webpack_require__(28);
+	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	  return (core.JSON && core.JSON.stringify || JSON.stringify).apply(JSON, arguments);
+	};
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	var exportRaw = function exportRaw(name, data) {
+	    var urlObject = window.URL || window.webkitURL || window;
+	    var export_blob = new Blob([data]);
+	    var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+	    save_link.href = urlObject.createObjectURL(export_blob);
+	    save_link.download = name;
+	    fakeClick(save_link);
+	};
+
+	function fakeClick(obj) {
+	    var ev = document.createEvent("MouseEvents");
+	    ev.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+	    obj.dispatchEvent(ev);
+	}
+
+	module.exports = exportRaw;
+
+/***/ }),
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1913,7 +1965,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _vm.toSave($event)
 	      }
 	    }
-	  }, [_vm._v(_vm._s(_vm.lang == 'en' ? 'save' : '保存'))])])])
+	  }, [_vm._v(_vm._s(_vm.lang == 'en' ? 'save' : '保存'))]), _vm._v(" "), _c('span', {
+	    staticClass: "fc-save",
+	    attrs: {
+	      "onselectstart": "return false",
+	      "title": "导出"
+	    },
+	    on: {
+	      "click": function($event) {
+	        $event.stopPropagation();
+	        return _vm.toExport($event)
+	      }
+	    }
+	  }, [_vm._v(_vm._s(_vm.lang == 'en' ? 'export' : '导出'))])])])
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
@@ -1924,7 +1988,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ }),
-/* 58 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

@@ -12,11 +12,13 @@
       <span onselectstart="return false" title="拉取" class="fc-pull" @click.stop="toPull">{{lang =='en'? 'pull' : '拉取'}}</span>
       <span onselectstart="return false" title="重置" class="fc-reset" @click.stop="toReset">{{lang =='en'? 'reset' : '重置'}}</span>
       <span onselectstart="return false" title="保存" class="fc-save" @click.stop="toSave">{{lang =='en'? 'save' : '保存'}}</span>
+      <span onselectstart="return false" title="导出" class="fc-save" @click.stop="toExport">{{lang =='en'? 'export' : '导出'}}</span>
     </div>
   </div>
 </template>
 <script type="text/babel">
   import dateFunc from './dateFunc'
+  import exportRaw from './export'
 
   export default {
     created () {
@@ -57,6 +59,9 @@
       toSave() {
         this.$emit('changeSave')
         this.dispatchEvent()
+      },
+      toExport () {
+        exportRaw('日期JSON数据'+new Date().getTime()+'.txt', JSON.stringify(this.arrData))
       },
       toToday () {
         this.headDate = this.changeMonth(this.headDate, 0,'today')
@@ -111,7 +116,8 @@
   display: flex;
   align-items: center;
   .header-left,.header-right{
-    flex:1;
+    flex:2;
+    white-space: nowrap;
   }
   .header-right{
     text-align: right;
@@ -128,8 +134,9 @@
     background: #eee;
   }
   .header-center{
-    flex:3;
+    flex:2;
     text-align:center;
+    white-space: nowrap;
     .title{
       margin: 0 10px;
       width: 90px;

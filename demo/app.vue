@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div class="box">
     <full-calendar :arrData="fcArrData"
       @dayClick="dayClick"
       @pullData="pullData"
       @resetData="resetData"
-      @saveData="saveData">
+      @saveData="saveData"
+      @exportData="exportData">
     </full-calendar>
   </div>
 </template>
@@ -61,6 +62,11 @@ export default {
       // 保存 数据 后重新拉取数据
       this.pullData()
     },
+    // 导出数据
+    exportData() {
+      // 导出 json数据
+      
+    },
     dayClick (day, jsEvent, dayObj) {
       let arr = []
       for (let item of this.fcArrData) {
@@ -77,12 +83,15 @@ export default {
       }
     }
   },
-  // components : {
-  //   'full-calendar' : require('src/fullCalendar')
-  // }
+  components : {
+    'full-calendar' : require('src/fullCalendar')
+  }
 }
 </script>
 <style lang='scss'>
+  .box{
+    height: 500px;
+  }
   .app{
     color:green;
   }
