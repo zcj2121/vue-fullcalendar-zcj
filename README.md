@@ -13,12 +13,13 @@ Vue.component('full-calendar', FullCalendar)
 ### 使用
 
 ```html
-  <full-calendar class="test-fc" :arrData="fcArrData"
-      first-day='1' lang="zh"
-      @dayClick="dayClick"
-      @pullData="pullData"
-      @saveData="saveData">
-    </full-calendar>
+  <full-calendar
+    :arrData="fcArrData"
+    @dayClick="dayClick"
+    @pullData="pullData"
+    @resetData="resetData"
+    @saveData="saveData">
+  </full-calendar>
 ```
 
 ```javascript
@@ -34,18 +35,21 @@ export default {
     }
   },
   created () {
-    this.pullData()
+    this.resetData()
   },
   methods : {
-    // 拉取数据
+    // 拉取数据 由前端请求公共接口获取数据
     pullData() {
-      // 获取数据 如果获取到数据 用获取到的数据  如果没有 用本地数据
+      this.fcArrData =  [...demoArrData]
+    },
+    // 重置数据
+    resetData() {
       this.fcArrData =  [...demoArrData]
     },
     // 保存数据
     saveData() {
-      // 保存 数据 后重新拉取数据
-      this.pullData()
+      // 保存 数据 然后重置数据
+      this.resetData()
 		},
 		// 点击日期 设置工作日、非工作日
     dayClick (day, jsEvent, dayObj) {

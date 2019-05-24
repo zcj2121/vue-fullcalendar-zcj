@@ -528,7 +528,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = {
 	  props: {
-
 	    arrData: {
 	      type: Array,
 	      default: []
@@ -544,7 +543,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return res >= 0 && res <= 6;
 	      },
 
-	      default: 0
+	      default: 1
 	    },
 	    titleFormat: {
 	      type: String,
@@ -575,6 +574,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  methods: {
 	    changeArrDatas: function changeArrDatas() {
 	      this.$emit('pullData');
+	    },
+	    changeResets: function changeResets() {
+	      this.$emit('resetData');
 	    },
 	    changeSaves: function changeSaves() {
 	      this.$emit('saveData');
@@ -631,6 +633,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	//
 	//
+	//
+	//
 
 /***/ }),
 /* 8 */
@@ -651,11 +655,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    weekNames: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
 	    monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
 	    titleFormat: 'yyyy年MM月'
-	  },
-	  fr: {
-	    weekNames: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-	    monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-	    titleFormat: 'MMMM yyyy'
 	  }
 	};
 
@@ -1707,7 +1706,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "\n.full-calendar-header {\n  display: flex;\n  align-items: center;\n}\n.full-calendar-header .header-left, .full-calendar-header .header-right {\n    flex: 1;\n}\n.full-calendar-header .header-right {\n    text-align: right;\n}\n.full-calendar-header .fc-today, .full-calendar-header .fc-pull, .full-calendar-header .fc-save {\n    display: inline-block;\n    border: 1px solid #ccc;\n    padding: 2px 6px;\n    font-size: 14px;\n    border-radius: 2px;\n    cursor: pointer;\n}\n.full-calendar-header .fc-today:hover, .full-calendar-header .fc-pull:hover, .full-calendar-header .fc-save:hover {\n    background: #eee;\n}\n.full-calendar-header .header-center {\n    flex: 3;\n    text-align: center;\n}\n.full-calendar-header .header-center .title {\n      margin: 0 10px;\n      width: 90px;\n      display: inline-block;\n}\n.full-calendar-header .header-center .prev-month, .full-calendar-header .header-center .next-month {\n      cursor: pointer;\n}\n", ""]);
+	exports.push([module.id, "\n.full-calendar-header {\n  display: flex;\n  align-items: center;\n}\n.full-calendar-header .header-left, .full-calendar-header .header-right {\n    flex: 1;\n}\n.full-calendar-header .header-right {\n    text-align: right;\n}\n.full-calendar-header .fc-today, .full-calendar-header .fc-pull, .full-calendar-header .fc-reset, .full-calendar-header .fc-save {\n    display: inline-block;\n    border: 1px solid #ccc;\n    padding: 2px 6px;\n    font-size: 14px;\n    border-radius: 2px;\n    cursor: pointer;\n}\n.full-calendar-header .fc-today:hover, .full-calendar-header .fc-pull:hover, .full-calendar-header .fc-save:hover, .full-calendar-header .fc-reset:hover {\n    background: #eee;\n}\n.full-calendar-header .header-center {\n    flex: 3;\n    text-align: center;\n}\n.full-calendar-header .header-center .title {\n      margin: 0 10px;\n      width: 90px;\n      display: inline-block;\n}\n.full-calendar-header .header-center .prev-month, .full-calendar-header .header-center .next-month {\n      cursor: pointer;\n}\n", ""]);
 
 	// exports
 
@@ -1734,6 +1733,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  props: {
+	    lang: {},
 	    arrData: {},
 	    currentDate: {},
 	    titleFormat: {},
@@ -1759,6 +1759,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  methods: {
 	    toPull: function toPull() {
 	      this.$emit('changeData');
+	      this.dispatchEvent();
+	    },
+	    toReset: function toReset() {
+	      this.$emit('changeReset');
 	      this.dispatchEvent();
 	    },
 	    toSave: function toSave() {
@@ -1822,6 +1826,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	//
 	//
+	//
 
 /***/ }),
 /* 57 */
@@ -1835,7 +1840,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, [_c('span', {
 	    staticClass: "fc-today",
 	    attrs: {
-	      "onselectstart": "return false"
+	      "onselectstart": "return false",
+	      "title": "今天"
 	    },
 	    on: {
 	      "click": function($event) {
@@ -1843,7 +1849,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _vm.toToday($event)
 	      }
 	    }
-	  }, [_vm._v("今天")])]), _vm._v(" "), _c('div', {
+	  }, [_vm._v(_vm._s(_vm.lang == 'en' ? 'today' : '今天'))])]), _vm._v(" "), _c('div', {
 	    staticClass: "header-center"
 	  }, [_c('span', {
 	    staticClass: "prev-month",
@@ -1874,7 +1880,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, [_c('span', {
 	    staticClass: "fc-pull",
 	    attrs: {
-	      "onselectstart": "return false"
+	      "onselectstart": "return false",
+	      "title": "拉取"
 	    },
 	    on: {
 	      "click": function($event) {
@@ -1882,10 +1889,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _vm.toPull($event)
 	      }
 	    }
-	  }, [_vm._v("拉取数据")]), _vm._v(" "), _c('span', {
+	  }, [_vm._v(_vm._s(_vm.lang == 'en' ? 'pull' : '拉取'))]), _vm._v(" "), _c('span', {
+	    staticClass: "fc-reset",
+	    attrs: {
+	      "onselectstart": "return false",
+	      "title": "重置"
+	    },
+	    on: {
+	      "click": function($event) {
+	        $event.stopPropagation();
+	        return _vm.toReset($event)
+	      }
+	    }
+	  }, [_vm._v(_vm._s(_vm.lang == 'en' ? 'reset' : '重置'))]), _vm._v(" "), _c('span', {
 	    staticClass: "fc-save",
 	    attrs: {
-	      "onselectstart": "return false"
+	      "onselectstart": "return false",
+	      "title": "保存"
 	    },
 	    on: {
 	      "click": function($event) {
@@ -1893,7 +1913,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _vm.toSave($event)
 	      }
 	    }
-	  }, [_vm._v("保存数据")])])])
+	  }, [_vm._v(_vm._s(_vm.lang == 'en' ? 'save' : '保存'))])])])
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
@@ -1916,11 +1936,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      "title-format": _vm.titleFormat,
 	      "first-day": _vm.firstDay,
 	      "arrData": _vm.arrData,
+	      "lang": _vm.lang,
 	      "month-names": _vm.monthNames
 	    },
 	    on: {
 	      "change": _vm.emitChangeMonth,
 	      "changeData": _vm.changeArrDatas,
+	      "changeReset": _vm.changeResets,
 	      "changeSave": _vm.changeSaves
 	    }
 	  }, [_c('div', {

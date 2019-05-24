@@ -5,9 +5,11 @@
       :title-format="titleFormat"
       :first-day="firstDay"
       :arrData="arrData"
+      :lang="lang"
       :month-names="monthNames"
       @change="emitChangeMonth"
       @changeData="changeArrDatas"
+      @changeReset="changeResets"
       @changeSave="changeSaves">
       <div slot="header-left">
         <slot name="fc-header-left">
@@ -37,7 +39,6 @@
 
   export default {
     props : {
-     
       arrData : { 
         type : Array,
         default : []
@@ -52,7 +53,7 @@
           let res = parseInt(val)
           return res >= 0 && res <= 6
         },
-        default : 0
+        default : 1
       },
       titleFormat : {
         type : String,
@@ -82,6 +83,9 @@
     methods : {
       changeArrDatas() {
         this.$emit('pullData')
+      },
+      changeResets() {
+        this.$emit('resetData')
       },
       changeSaves() {
         this.$emit('saveData')

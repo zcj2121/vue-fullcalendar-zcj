@@ -1,9 +1,9 @@
 <template>
   <div>
-    <full-calendar class="test-fc" :arrData="fcArrData"
-      first-day='1' lang="zh"
+    <full-calendar :arrData="fcArrData"
       @dayClick="dayClick"
       @pullData="pullData"
+      @resetData="resetData"
       @saveData="saveData">
     </full-calendar>
   </div>
@@ -39,7 +39,7 @@ export default {
     }
   },
   created () {
-    this.pullData()
+    this.resetData()
   },
   mounted () {
 
@@ -47,7 +47,13 @@ export default {
   methods : {
     // 拉取数据
     pullData() {
-      // 获取数据 如果获取到数据 用获取到的数据  如果没有 用本地数据
+      this.fcArrData =  [{
+        time: '2019-05-05',
+        type: '2'
+      }]
+    },
+    // 重置数据
+    resetData() {
       this.fcArrData =  [...demoArrData]
     },
     // 保存数据

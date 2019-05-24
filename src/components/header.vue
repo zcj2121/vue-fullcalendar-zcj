@@ -1,7 +1,7 @@
 <template>
   <div class="full-calendar-header">
     <div class="header-left">
-      <span onselectstart="return false" class="fc-today" @click.stop="toToday">今天</span>
+      <span onselectstart="return false" class="fc-today" title="今天" @click.stop="toToday">{{lang =='en'? 'today' : '今天'}}</span>
     </div>
     <div class="header-center">
       <span onselectstart="return false" class="prev-month" @click.stop="goPrev">{{leftArrow}}</span>
@@ -9,8 +9,9 @@
       <span onselectstart="return false" class="next-month" @click.stop="goNext">{{rightArrow}}</span>
     </div>
     <div class="header-right">
-      <span onselectstart="return false" class="fc-pull" @click.stop="toPull">拉取数据</span>
-      <span onselectstart="return false" class="fc-save" @click.stop="toSave">保存数据</span>
+      <span onselectstart="return false" title="拉取" class="fc-pull" @click.stop="toPull">{{lang =='en'? 'pull' : '拉取'}}</span>
+      <span onselectstart="return false" title="重置" class="fc-reset" @click.stop="toReset">{{lang =='en'? 'reset' : '重置'}}</span>
+      <span onselectstart="return false" title="保存" class="fc-save" @click.stop="toSave">{{lang =='en'? 'save' : '保存'}}</span>
     </div>
   </div>
 </template>
@@ -22,6 +23,7 @@
       this.dispatchEvent()
     },
     props : {
+      lang : {},
       arrData : {},
       currentDate : {},
       titleFormat : {},
@@ -46,6 +48,10 @@
     methods : {
       toPull() {
         this.$emit('changeData')
+        this.dispatchEvent()
+      },
+      toReset() {
+        this.$emit('changeReset')
         this.dispatchEvent()
       },
       toSave() {
@@ -110,7 +116,7 @@
   .header-right{
     text-align: right;
   }
-  .fc-today, .fc-pull, .fc-save{
+  .fc-today, .fc-pull, .fc-reset, .fc-save{
     display: inline-block;
     border: 1px solid #ccc;
     padding: 2px 6px;
@@ -118,7 +124,7 @@
     border-radius: 2px;
     cursor: pointer;
   }
-  .fc-today:hover, .fc-pull:hover, .fc-save:hover{
+  .fc-today:hover, .fc-pull:hover, .fc-save:hover, .fc-reset:hover{
     background: #eee;
   }
   .header-center{
