@@ -1,5 +1,5 @@
 /*!
- * vue-fullcalendar-zcj v1.1.5
+ * vue-fullcalendar-zcj v1.1.6
  * (c) 2019 jackjo 
  * @license MIT
  */
@@ -1706,7 +1706,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "\n.full-calendar-header {\n  display: flex;\n  align-items: center;\n}\n.full-calendar-header .header-left, .full-calendar-header .header-right {\n    flex: 2;\n    white-space: nowrap;\n}\n.full-calendar-header .header-right {\n    text-align: right;\n}\n.full-calendar-header .fc-today, .full-calendar-header .fc-pull, .full-calendar-header .fc-reset, .full-calendar-header .fc-save {\n    display: inline-block;\n    border: 1px solid #ccc;\n    padding: 2px 6px;\n    font-size: 14px;\n    border-radius: 2px;\n    cursor: pointer;\n}\n.full-calendar-header .fc-today:hover, .full-calendar-header .fc-pull:hover, .full-calendar-header .fc-save:hover, .full-calendar-header .fc-reset:hover {\n    background: #eee;\n}\n.full-calendar-header .header-center {\n    flex: 2;\n    text-align: center;\n    white-space: nowrap;\n}\n.full-calendar-header .header-center .title {\n      margin: 0 10px;\n      width: 90px;\n      display: inline-block;\n}\n.full-calendar-header .header-center .prev-month, .full-calendar-header .header-center .next-month {\n      cursor: pointer;\n}\n", ""]);
+	exports.push([module.id, "\n.full-calendar-header {\n  display: flex;\n  align-items: center;\n}\n.full-calendar-header .header-left, .full-calendar-header .header-right {\n    flex: 2;\n    white-space: nowrap;\n}\n.full-calendar-header .header-left {\n    text-align: left;\n}\n.full-calendar-header .header-right {\n    text-align: right;\n}\n.full-calendar-header .fc-today, .full-calendar-header .fc-pull, .full-calendar-header .fc-reset, .full-calendar-header .fc-save {\n    display: inline-block;\n    border: 1px solid #ccc;\n    padding: 2px 6px;\n    font-size: 14px;\n    border-radius: 2px;\n    cursor: pointer;\n}\n.full-calendar-header .fc-today:hover, .full-calendar-header .fc-pull:hover, .full-calendar-header .fc-save:hover, .full-calendar-header .fc-reset:hover {\n    background: #eee;\n}\n.full-calendar-header .header-center {\n    flex: 2;\n    text-align: center;\n    white-space: nowrap;\n}\n.full-calendar-header .header-center .title {\n      margin: 0 10px;\n      width: 90px;\n      display: inline-block;\n}\n.full-calendar-header .header-center .prev-month, .full-calendar-header .header-center .next-month {\n      cursor: pointer;\n}\n", ""]);
 
 	// exports
 
