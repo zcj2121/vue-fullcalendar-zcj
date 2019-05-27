@@ -119,6 +119,9 @@
     flex:2;
     white-space: nowrap;
   }
+  .header-left{
+    text-align: left;
+  }
   .header-right{
     text-align: right;
   }
